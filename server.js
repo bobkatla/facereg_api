@@ -46,7 +46,9 @@ app.post('/register', register.registerHandle(db, bcrypt));
 
 app.get('/profile/:id', idUser.idHandle(db));
 
-app.put('/image', image.imageHandle(db))
+app.put('/image', image.imageHandle(db));
+
+app.post('/urlimage', image.clarifaiHandle);
 
 // run on port 5000
 app.listen(5000, () => {
