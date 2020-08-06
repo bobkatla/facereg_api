@@ -38,7 +38,7 @@ app.use(cors());
 
 // Note to see some explaination of currying in the login file
 
-app.get('/', (req, res) => {res.json(database.users);})
+app.get('/', (req, res) => {res.json('it is working');})
 
 app.post('/signin', login.loginHandle(db, bcrypt));
 
