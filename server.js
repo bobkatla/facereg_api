@@ -39,18 +39,17 @@ app.use(cors());
 // RESTful api
 
 // below is the old way without currying where you inject req res along with needed info to pass to functions
+// app.post('/register', (req, res) => {
+//     register.registerHandle(req, res, db, bcrypt);
+// })
 
 // Note to see some explaination of currying in the login file
+
+app.post('/register', register.registerHandle(db, bcrypt));
 
 app.get('/', (req, res) => {res.json('it is working');})
 
 app.post('/signin', login.loginHandle(db, bcrypt));
-
-// app.post('/register', register.registerHandle(db, bcrypt));
-
-app.post('/register', (req, res) => {
-    register.registerHandle(req, res, db, bcrypt);
-})
 
 app.get('/profile/:id', idUser.idHandle(db));
 

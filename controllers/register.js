@@ -1,6 +1,6 @@
 const saltRounds = 10;
 
-const registerHandle = (req, res, db, bcrypt) => {
+const registerHandle = (db, bcrypt) => (req, res) => {
     const {email, password, name} = req.body;
 
     if(!email || !name || !password) {
