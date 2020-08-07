@@ -51,6 +51,11 @@ app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {res.json('it is working');})
 
+app.post('/test', (req, res) => {
+    const {something} = req.body;
+    res.json(something);
+})
+
 app.post('/signin', login.loginHandle(db, bcrypt));
 
 app.post('/register', register.registerHandle(db, bcrypt));
