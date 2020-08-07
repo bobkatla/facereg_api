@@ -31,10 +31,14 @@ const app = express();
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //     next();
 // });
+const corsOptions = {
+    origin: 'localhost:3000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // RESTful api
 
@@ -49,7 +53,7 @@ app.get('/', (req, res) => {res.json('it is working');})
 
 app.post('/signin', login.loginHandle(db, bcrypt));
 
-app.post('/register', cors(), register.registerHandle(db, bcrypt));
+app.post('/register', register.registerHandle(db, bcrypt));
 
 app.get('/profile/:id', idUser.idHandle(db));
 
