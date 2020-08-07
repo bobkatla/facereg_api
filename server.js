@@ -7,10 +7,8 @@ const knex = require('knex');
 const db = knex({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        user: 'postgres',
-        password: 'conmeocon1',
-        database: 'facereg'
+        connectionString: process.env.DATABASE_URL,
+        ssl: true
     }
 })
 
@@ -26,11 +24,6 @@ const app = express();
 
 // middleware
 
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "localhost:3000");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
 const corsOptions = {
     origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
