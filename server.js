@@ -54,7 +54,7 @@ conf = {
         // origin handler
         origin: function (origin, cb) {
             // setup a white list
-            let wl = ['https://dustinpfister.github.io'];
+            let wl = ['localhost:3000'];
  
             if (wl.indexOf(origin) != -1) {
                 cb(null, true);
