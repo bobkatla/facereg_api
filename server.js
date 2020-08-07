@@ -45,11 +45,11 @@ app.use(cors());
 
 // Note to see some explaination of currying in the login file
 
-app.post('/register', register.registerHandle(db, bcrypt));
-
 app.get('/', (req, res) => {res.json('it is working');})
 
 app.post('/signin', login.loginHandle(db, bcrypt));
+
+app.post('/register', cors(), register.registerHandle(db, bcrypt));
 
 app.get('/profile/:id', idUser.idHandle(db));
 
